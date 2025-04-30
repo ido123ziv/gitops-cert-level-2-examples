@@ -1,11 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
+metadata:
+  name: qa
+  namespace: argocd
 spec:
   project: default
   source:
-    repoURL: "https://github.com/ido123ziv/gitops-cert-level-2-examples"
-    path: environment-promotion/envs/qa
+    repoURL: "https://github.com/ido123ziv/gitops-cert-level-2-examples.git"
     targetRevision: HEAD
+    path: environment-promotion/envs/qa
   destination:
     server: "https://kubernetes.default.svc"
     namespace: qa
@@ -13,5 +16,6 @@ spec:
     automated:
       prune: true
       selfHeal: true
+      allowEmpty: true
     syncOptions:
       - CreateNamespace=true
