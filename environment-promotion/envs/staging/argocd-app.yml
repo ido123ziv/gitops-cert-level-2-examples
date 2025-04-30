@@ -1,0 +1,12 @@
+project: default
+source:
+  repoURL: "https://github.com/ido123ziv/gitops-cert-level-2-examples"
+  path: environment-promotion/envs/staging
+  targetRevision: HEAD
+destination:
+  server: "https://kubernetes.default.svc"
+  namespace: staging
+syncPolicy:
+  automated:
+    prune: true
+    selfHeal: true
