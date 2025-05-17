@@ -29,5 +29,6 @@ spec:
           .metadata.annotations.creation
     - group: v1
       kind: Secret
-      jsonPointers:
-        - /data/my-password
+      jqPathExpressions:
+        - >-
+          .data."my-password"
